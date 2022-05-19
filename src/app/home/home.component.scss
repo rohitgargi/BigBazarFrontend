@@ -1,0 +1,44 @@
+.carousal-main{
+    .carousel-control-prev,.carousel-control-next{
+        background: gray;
+        width: 30px;
+        height: 54px;
+        top:44%;
+    }
+}
+.product-category{
+    .each-category{
+        display: flex;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 2px -2px #dedede;
+        padding: 15px;
+        .img-container{
+            width: 234px;
+            height: 100px;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        &.odd{
+            gap:20%;
+            flex-flow: row-reverse; 
+            .img-container{
+                margin-left: 15%;
+            }
+        }
+        &.even{
+            gap:30%;
+            .img-container{
+                margin-right: 10%;;
+            }
+        }
+        &:first-of-type{
+            margin-top: 25px;
+        }
+    }
+
+    .category-container{
+        text-align: center;
+    }
+}

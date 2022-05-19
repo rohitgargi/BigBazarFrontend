@@ -1,0 +1,32 @@
+<article class="plp-container">
+    <aside class="plp-filter">
+        <ng-container> 
+            <mat-form-field appearance="fill" class="svp-filter">
+                <mat-select [(value)]="dropdownDefaultVal" (selectionChange)="onChangeFilter($event)" placeholder="Select">
+                    <mat-option [value]="category.id" *ngFor="let category of productCategory">{{category.name}}</mat-option>
+                </mat-select>
+                <!-- <select matNativeControl (change)="onChangeFilter($event.target.value)">
+                    <option value="''">Select</option>
+                    <option [value]="category.id" *ngFor="let category of productCategory">{{category.name}}</option>
+                </select> -->
+            </mat-form-field>
+        </ng-container>
+        <ul class="lvp-filter">
+            <li [ngClass]="{'selected':selectedCategory?.id == category.id}" *ngFor="let category of productCategory" (click)="getFilteredProducts(category)">
+                {{category.name}}
+            </li>
+        </ul>
+    </aside>
+    <section class="plp-content row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+            <section class="plp-card">
+                <h2 [title]="product.name">{{product.name | maxText: 30}}</h2>
+                <div class="img-container">
+                    <img [src]="rootUrl + product.imageURL"/>
+                    
+                </div>
+                <p [title]="product.description" class="product-desc">{{product.description | maxText:120}}</p>
+            </section>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,90 @@
+
+@import "../../assets/scss/abstract/mixin.scss";
+@import "../../assets/scss/partials/layout.vars";
+.plp-container{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+
+      
+    .plp-filter{
+        background-color: #fff;
+        .lvp-filter{
+            li.selected{
+                background-color: $color-theme;
+                color: $gs-19;
+            }
+        }
+    }
+    .plp-content{
+        flex-basis: 83%;
+        .plp-card{
+            background-color: white;
+            padding: 5px 15px;
+            margin-bottom: 15px;
+            box-shadow: 2px 0px 0px 0px #dedede;
+            border-bottom: 2px dotted #cecece;
+            height: auto;
+
+            @include medium-screen{
+                height: 348px;
+            }
+            h2{
+                font-size: 14px;
+                font-weight: 600;
+            }
+            .product-desc{
+                background-color: #f5f5f5;
+                padding: 5px;
+                font-size: 12px;
+                height: 100px;
+                overflow: hidden;
+            }
+            .img-container{
+                height: 150px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .lvp-filter{
+        display: none;
+    }
+    .svp-filter{
+        display: block;
+        margin-bottom: 20px;
+    }
+    .example-additional-selection {
+        opacity: 0.75;
+        font-size: 0.75em;
+    }
+
+    @include medium-screen{
+        flex-direction: row;
+        .plp-filter{
+            background-color: #f2f2f2;
+            flex-basis: 23%;
+            ul{
+                list-style: none;
+                padding: 0;
+                li{
+                    padding: 10px 15px;
+                    color: #777;
+                    font-size: 13px;
+                    border-bottom: 1px solid #ccc;
+                    cursor: pointer;
+                }
+            }
+
+        }
+        .lvp-filter{
+            display: block;
+        }
+        .svp-filter{
+            display: none;
+        }
+    }
+
+}

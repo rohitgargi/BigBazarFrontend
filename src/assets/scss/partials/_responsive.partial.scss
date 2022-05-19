@@ -1,0 +1,49 @@
+/****************************************/
+/******Mixin for differnt screens********/
+
+
+//Small devices (landscape phones, 576px and up)
+@mixin small-screen {
+    @media screen and (min-width:576px) {
+        @content;
+    }
+}
+
+
+//Medium devices (tablets, 768px and up)
+@mixin medium-screen {
+    @media screen and (min-width:768px) {
+        @content;
+    }
+}
+// Large devices (desktops, 992px and up)
+@mixin large-screen {
+    @media screen and (min-width:992px) {
+        @content;
+    }
+}
+
+//Extra large devices (large desktops, 1200px and up)
+@mixin extra-large-screen {
+    @media screen and (min-width:1200px) {
+        @content;
+    }
+}
+
+@mixin range-of-screen($min:320px,$max:480px) {
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+@mixin custom-max-width($max:767px) {
+    @media screen and (max-width:$max) {
+        @content;
+    }
+}
+
+@mixin custom-min-width($min:768px) {
+    @media screen and (min-width:$min) {
+        @content;
+    }
+}
