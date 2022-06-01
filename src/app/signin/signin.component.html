@@ -5,16 +5,19 @@
            <p>Get access to your orders. Wishlist and Recommendation</p>
         </div>
         <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
-            <form class="login-form">
-                <mat-form-field class="full-width">
+            <form (ngSubmit)="onSubmit()" class="login-form" [formGroup]="loginForm">
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':email?.invalid}">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="Eg: abc@mail.com" value="">
+                    <input matInput placeholder="Eg: abc@mail.com" value="" formControlName="email">
+                    <mat-error  *ngIf="email?.invalid">Email is invalid</mat-error>
                 </mat-form-field>
                 
-                <mat-form-field class="full-width">
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':password?.invalid}">
                     <mat-label>Password</mat-label>
-                    <input matInput value="">
+                    <input matInput value="" formControlName="password">
+                    <mat-error *ngIf="password?.invalid">Password must have uppercase, lowercase, speical char and must be 8 char long.</mat-error>
                 </mat-form-field>
+                <button class="primary-btn" type="submit" [disabled]="!loginForm.valid" mat-button>Login</button>
             </form>
         </div>
     </div>
