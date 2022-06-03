@@ -20,10 +20,8 @@
         width: 100%;
       }
 
-      @include custom-max-width(767px){
-        .primary-btn[type='submit']{
-          width: 100%;
-        }
+      .primary-btn[type='submit']{
+        width: 100%;
       }
 }
 

@@ -1,0 +1,29 @@
+
+
+@import "../../assets//scss/abstract/mixin.scss";
+
+.register-container{
+
+    .row{
+        padding: 15px 20px;
+        @include medium-screen{
+            padding: 100px;
+        }
+    }
+    .signup-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .full-width {
+        width: 100%;
+      }
+
+      
+    .primary-btn[type='submit']{
+        width: 100%;
+    }
+      
+}
+

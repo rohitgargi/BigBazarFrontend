@@ -22,4 +22,9 @@ export class FetchApiService {
 
     return this.http.get<IProduct[]>("http://localhost:9000/fetch-products",{params});
   }
+
+  fetchAdminDetails(){
+    return this.http.get("http://localhost:9000/admin")
+  }
+
 }

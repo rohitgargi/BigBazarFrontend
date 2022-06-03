@@ -1,1 +1,49 @@
-<p>register works!</p>
+<section class="register-container">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+           <h1>Signup</h1>
+           <p>We do not share your personal details with anyone.</p>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+            <form (ngSubmit)="onSubmit()" class="signup-form" [formGroup]="signupForm">
+
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':firstName?.invalid}">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="abc" value="" formControlName="firstName">
+                    <mat-error  *ngIf="firstName?.invalid">First Name is required</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':lastName?.invalid}">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="xyz" value="" formControlName="lastName">
+                    <mat-error  *ngIf="lastName?.invalid">Last Name is required</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':email?.invalid}">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Eg: abc@mail.com" value="" formControlName="email">
+                    <mat-error  *ngIf="email?.invalid">Email is invalid</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':password?.invalid}">
+                    <mat-label>Password</mat-label>
+                    <input matInput value="" type="password" formControlName="password">
+                    <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                    <mat-error *ngIf="password?.errors?.['passwordCriteria']">Password should have uppercase, lowercase, numeric and special character.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':confirmPwd?.invalid}">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput placeholder="xyz" value="" type="password" formControlName="confirmPwd">
+                    <mat-error  *ngIf="confirmPwd?.errors?.['required']">Confirm password required</mat-error>
+                    <mat-error  *ngIf="confirmPwd?.errors?.['mustMatch']">Did not match with the above password.</mat-error>
+                </mat-form-field>
+                <button class="primary-btn" type="submit" [disabled]="!signupForm.valid" mat-button>Register</button>
+            </form>
+        </div>
+    </div>
+
+    
+</section>

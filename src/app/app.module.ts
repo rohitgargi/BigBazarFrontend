@@ -7,13 +7,16 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaxTextPipe } from './shared/pipes/max-text.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../materialDesign/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './shared/services/auth.service';
+import { AuthInterceptor } from './shared/services/authInterceptor.service';
+import { AdminComponent } from './admin/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
     ProductsComponent,
     MaxTextPipe,
     SigninComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,11 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     MaterialModule
     ],
-  providers: [],
+  providers: [AuthService, {  
+    provide: HTTP_INTERCEPTORS,  
+    useClass: AuthInterceptor,  
+    multi: true  
+  }  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
