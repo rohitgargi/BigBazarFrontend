@@ -18,6 +18,9 @@ import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/services/authInterceptor.service';
 import { AdminComponent } from './admin/admin/admin.component';
 
+import { StoreModule} from '@ngrx/store';
+import { loginReducer } from './store/reducers/auth.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,7 @@ import { AdminComponent } from './admin/admin/admin.component';
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({loggedIn: loginReducer}),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

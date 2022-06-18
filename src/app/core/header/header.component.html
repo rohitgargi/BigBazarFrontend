@@ -17,9 +17,10 @@
     </div>
     <div class="secondary-navigation">
         <div>
-            <ul role="navigation">
-                <li><a tabindex="0" [routerLink]="['signin']">SignIn</a></li>
-                <li><a tabindex="0" [routerLink]="['register']">Register</a></li>
+            <ul role="navigation" *ngIf="!(isLoggedIn$ | async)">
+                    <li><a tabindex="0" [routerLink]="['signin']">SignIn</a></li>
+                    <li><a tabindex="0" [routerLink]="['register']">Register</a></li>
+                
             </ul>
         </div>
         <div class="cart-container">

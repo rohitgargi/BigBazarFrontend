@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  isLoggedIn$:Observable<boolean> | undefined
+  constructor(private store: Store<{loggedIn:boolean}>) { }
 
   ngOnInit(): void {
+    this.isLoggedIn$ = this.store.select('loggedIn')
   }
 
 }
