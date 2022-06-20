@@ -14,7 +14,7 @@
                 
                 <mat-form-field class="full-width" [ngClass]="{'margin-bottom-10':password?.invalid}">
                     <mat-label>Password</mat-label>
-                    <input matInput value="" formControlName="password">
+                    <input matInput type="password" value="" formControlName="password">
                     <mat-error *ngIf="password?.errors?.['required']">Password is required.</mat-error>
                     <mat-error *ngIf="password?.errors?.['passwordCriteria']">Password must have uppercase, lowercase, speical char and must be 8 char long.</mat-error>
                 </mat-form-field>

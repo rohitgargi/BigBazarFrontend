@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn$:Observable<boolean> | undefined
-  constructor(private store: Store<{loggedIn:boolean}>) { }
+  isLoggedIn: boolean = false;
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.isLoggedIn$ = this.store.select('loggedIn')
+    this.store.select('auth').subscribe((state)=>{
+      this.isLoggedIn = state.isLoggedIn;
+    })
   }
 
 }

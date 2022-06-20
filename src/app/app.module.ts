@@ -19,7 +19,10 @@ import { AuthInterceptor } from './shared/services/authInterceptor.service';
 import { AdminComponent } from './admin/admin/admin.component';
 
 import { StoreModule} from '@ngrx/store';
-import { loginReducer } from './store/reducers/auth.reducer';
+import { metaReducers, reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthModule } from './modules/auth/auth.modules';
+// import { loginReducer } from './store/reducers/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,26 @@ import { loginReducer } from './store/reducers/auth.reducer';
     HomeComponent,
     ProductsComponent,
     MaxTextPipe,
-    SigninComponent,
     RegisterComponent,
     AdminComponent
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({loggedIn: loginReducer}),
+    AuthModule,
+    StoreModule.forRoot(reducers,{
+      metaReducers,
+      runtimeChecks:{
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+      }
+    }),
+    EffectsModule.forRoot([
+     
+    ]),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
